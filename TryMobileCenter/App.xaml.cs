@@ -58,13 +58,15 @@ namespace TryMobileCenter
 				}
 			};
 		}
-		
+
 		protected override void OnStart()
 		{
 			// Handle when your app starts
+#if !ENABLE_TEST_CLOUD
 			Microsoft.Azure.Mobile.MobileCenter.LogLevel = Microsoft.Azure.Mobile.LogLevel.Verbose;
 			Microsoft.Azure.Mobile.MobileCenter.Start(Secrets.MobileCenterAndroid + Secrets.MobileCenteriOS,
-                   typeof(Analytics), typeof(Crashes));
+				   typeof(Analytics), typeof(Crashes));
+#endif
 		}
 	}
 }

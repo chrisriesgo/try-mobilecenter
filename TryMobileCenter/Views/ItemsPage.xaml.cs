@@ -23,10 +23,12 @@ namespace TryMobileCenter
 			if (item == null)
 				return;
 
+#if !ENABLE_TEST_CLOUD
 			Analytics.TrackEvent("Item clicked", new Dictionary<string, string> {
 				{ "Id", item.Id },
 				{ "Text", item.Text }
 			});
+#endif
 
 			await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
 
